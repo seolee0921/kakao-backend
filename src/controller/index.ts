@@ -1,8 +1,11 @@
-import express from 'express';
-import schoolController from './school.controller';
+import express from "express";
+import friendController from "./friend.controller";
+import userController from "./user.controller";
 
 const router = express.Router();
 
-router.use('/schools', schoolController);
+router.use("/users", userController);
+
+router.use("/friends", friendController);
 
 export default router;
