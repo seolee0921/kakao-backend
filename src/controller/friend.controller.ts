@@ -77,4 +77,23 @@ router.get("/:userId", async (req, res) => {
   return res.status(200).json(friendList);
 });
 
+router.get("/search", async (req, res) => {
+  const { phone } = req.query as FriendSearchType;
+  if (!phone) {
+    return res.status(400).json();
+  }
+
+  const user = await User.findOne({
+    where: {
+      phone,
+    },
+  });
+
+  if (!phone) {
+    return res.status(404).json();
+  }
+
+  return res.status(200).json(user);
+});
+
 export default router;
